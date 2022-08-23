@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import useAddRemoveProducts from '../_hooks/useAddRemoveProducts'
 
 
 const Main = () => {
 	// const list = ["Limoni", "Pane", "Fragole"]
 	const list = [{ name: "Pane", price: 1.50 }, { name: "Fragole", price: 2.00 }]
 
-	const [basket, setBasket] = useState<any>([])
-	const [totalPrice, setTotalPrice] = useState<number>(0)
+	// const [basket, setBasket] = useState<any>([])
+	// const [totalPrice, setTotalPrice] = useState<number>(0)
+	const { addProduct, removeProduct, basket, totalPrice, setBasket, setTotalPrice } = useAddRemoveProducts()
 
 	useEffect(() => {
 		const array: any = []
@@ -17,41 +19,39 @@ const Main = () => {
 		setBasket(array)
 	}, [])
 
-	const addProduct = (prodotto: any) => {
-		const newArray: any = []
-		basket.map((el: any) => {
-			if (el.name === prodotto.name) {
-				console.log(el)
-				el.quantity++
-				newArray.push(el)
-			}
-			else {
-				newArray.push(el)
-			}
-			setTotalPrice(totalPrice + prodotto.price)
+	// const addProduct = (prodotto: any) => {
+	// 	const newArray: any = []
+	// 	basket.map((el: any) => {
+	// 		if (el.name === prodotto.name) {
+	// 			console.log(el)
+	// 			el.quantity++
+	// 			newArray.push(el)
+	// 		}
+	// 		else {
+	// 			newArray.push(el)
+	// 		}
+	// 		setTotalPrice(totalPrice + prodotto.price)
 
-		})
-		console.log(newArray)
-		setBasket(newArray)
-	}
+	// 	})
+	// 	console.log(newArray)
+	// 	setBasket(newArray)
+	// }
 
-	const removeProduct = (prodotto: any) => {
-		const newArray: any = []
-		basket.map((el: any) => {
-			if (el.name === prodotto.name) {
-				el.quantity--
-				newArray.push(el)
-			}
-			else {
-				newArray.push(el)
-			}
-			setTotalPrice(totalPrice - prodotto.price)
-		})
-		console.log(newArray)
-		setBasket(newArray)
-	}
-
-	useEffect(() => { console.log("basket", basket) }, [basket])
+	// const removeProduct = (prodotto: any) => {
+	// 	const newArray: any = []
+	// 	basket.map((el: any) => {
+	// 		if (el.name === prodotto.name) {
+	// 			el.quantity--
+	// 			newArray.push(el)
+	// 		}
+	// 		else {
+	// 			newArray.push(el)
+	// 		}
+	// 		setTotalPrice(totalPrice - prodotto.price)
+	// 	})
+	// 	console.log(newArray)
+	// 	setBasket(newArray)
+	// }
 
 	return (
 		<div className='container'>
