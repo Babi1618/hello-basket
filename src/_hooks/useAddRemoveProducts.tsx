@@ -9,7 +9,7 @@ const useAddRemoveProducts = () => {
 		const newArray: any = []
 		basket.map((el: any) => {
 			if (el.name === prodotto.name) {
-				console.log(el)
+				// console.log(el)
 				el.quantity++
 				newArray.push(el)
 			}
@@ -34,7 +34,7 @@ const useAddRemoveProducts = () => {
 			}
 			setTotalPrice(totalPrice - prodotto.price)
 		})
-		console.log(newArray)
+		// console.log(newArray)
 		setBasket(newArray)
 	}
 
