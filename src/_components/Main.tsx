@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react'
 import useAddRemoveProducts from '../_hooks/useAddRemoveProducts'
-
 
 const Main = () => {
 	const { addProduct, removeProduct, basket, totalPrice } = useAddRemoveProducts()

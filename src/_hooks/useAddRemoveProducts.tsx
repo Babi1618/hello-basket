@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { list } from "../_constants/list"
 
 const useAddRemoveProducts = () => {
 	const [basket, setBasket] = useState<any>([])
 	const [totalPrice, setTotalPrice] = useState<number>(0)
-	const list = [{ name: "Pane", price: 1.50 }, { name: "Fragole", price: 2.00 }]
 
 	const addProduct = (prodotto: any) => {
 		const newArray: any = []
@@ -40,7 +40,7 @@ const useAddRemoveProducts = () => {
 
 	useEffect(() => {
 		const array: any = []
-		list.map(el => {
+		list.map((el: any) => {
 			let obj = { name: el.name, price: el.price, quantity: 0 }
 			array.push(obj)
 		})
