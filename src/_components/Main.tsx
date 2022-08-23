@@ -6,6 +6,7 @@ const Main = () => {
 	const list = [{ name: "Pane", price: 1.50 }, { name: "Fragole", price: 2.00 }]
 
 	const [basket, setBasket] = useState<any>([])
+	const [totalPrice, setTotalPrice] = useState<number>(0)
 
 	useEffect(() => {
 		const array: any = []
@@ -27,6 +28,8 @@ const Main = () => {
 			else {
 				newArray.push(el)
 			}
+			setTotalPrice(totalPrice + prodotto.price)
+
 		})
 		console.log(newArray)
 		setBasket(newArray)
@@ -36,13 +39,13 @@ const Main = () => {
 		const newArray: any = []
 		basket.map((el: any) => {
 			if (el.name === prodotto.name) {
-				// console.log(el)
 				el.quantity--
 				newArray.push(el)
 			}
 			else {
 				newArray.push(el)
 			}
+			setTotalPrice(totalPrice - prodotto.price)
 		})
 		console.log(newArray)
 		setBasket(newArray)
@@ -83,6 +86,16 @@ const Main = () => {
 
 							})
 						}
+					</div>
+					<div>
+						<div>
+							<div className='row' >
+								<div className='col-8'>Total : </div>
+								<div className='col-4'>{totalPrice}
+								</div>
+							</div>
+
+						</div>
 					</div>
 				</div>
 			</div>
