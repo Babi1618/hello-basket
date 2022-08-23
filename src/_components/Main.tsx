@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 
 
 const Main = () => {
-	const list = ["Limoni", "Pane"]
+	// const list = ["Limoni", "Pane", "Fragole"]
+	const list = [{ name: "Pane", price: 1.50 }, { name: "Fragole", price: 2.00 }]
+
 	const [basket, setBasket] = useState<any>([])
 
 	useEffect(() => {
 		const array: any = []
 		list.map(el => {
-			let obj = { name: el, quantity: 0 }
+			let obj = { name: el.name, price: el.price, quantity: 0 }
 			array.push(obj)
 		})
 		setBasket(array)
@@ -34,7 +36,7 @@ const Main = () => {
 		const newArray: any = []
 		basket.map((el: any) => {
 			if (el.name === prodotto.name) {
-				console.log(el)
+				// console.log(el)
 				el.quantity--
 				newArray.push(el)
 			}
@@ -58,7 +60,7 @@ const Main = () => {
 							basket.map((el: any, i: number) => {
 								return <div className='row' key={i}>
 									<div className='col-8'>
-										{el.name}
+										{el.name} - {el.price} $/pc
 									</div>
 									<div className='col-2' onClick={() => { addProduct(el) }}> + </div>
 								</div>
@@ -74,7 +76,7 @@ const Main = () => {
 									return <div className='row' key={i}>
 										<div className='col-1'>{el.quantity}</div>
 										<div className='col-1' onClick={() => { removeProduct(el) }}> - </div>
-										<div className='col-8'>	{el.name}</div>
+										<div className='col-8'>	{el.name} - {el.price * el.quantity} $</div>
 										<div className='col-1' onClick={() => { addProduct(el) }}> + </div>
 									</div>
 								}
