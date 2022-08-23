@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const useAddRemoveProducts = () => {
 	const [basket, setBasket] = useState<any>([])
 	const [totalPrice, setTotalPrice] = useState<number>(0)
-	const prova = () => {
-		console.log("prova")
-	}
+	const list = [{ name: "Pane", price: 1.50 }, { name: "Fragole", price: 2.00 }]
+
 	const addProduct = (prodotto: any) => {
 		const newArray: any = []
 		basket.map((el: any) => {
@@ -38,7 +37,16 @@ const useAddRemoveProducts = () => {
 		console.log(newArray)
 		setBasket(newArray)
 	}
-	return { addProduct, removeProduct, basket, totalPrice, setBasket, setTotalPrice }
+
+	useEffect(() => {
+		const array: any = []
+		list.map(el => {
+			let obj = { name: el.name, price: el.price, quantity: 0 }
+			array.push(obj)
+		})
+		setBasket(array)
+	}, [])
+	return { addProduct, removeProduct, basket, totalPrice, setBasket }
 
 }
 

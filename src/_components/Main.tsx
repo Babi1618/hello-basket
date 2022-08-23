@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import useAddRemoveProducts from '../_hooks/useAddRemoveProducts'
 
 
 const Main = () => {
-	// const list = ["Limoni", "Pane", "Fragole"]
-	const list = [{ name: "Pane", price: 1.50 }, { name: "Fragole", price: 2.00 }]
-	const { addProduct, removeProduct, basket, totalPrice, setBasket, setTotalPrice } = useAddRemoveProducts()
-
-	useEffect(() => {
-		const array: any = []
-		list.map(el => {
-			let obj = { name: el.name, price: el.price, quantity: 0 }
-			array.push(obj)
-		})
-		setBasket(array)
-	}, [])
+	const { addProduct, removeProduct, basket, totalPrice } = useAddRemoveProducts()
 
 	return (
 		<div className='container'>
